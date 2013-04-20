@@ -75,7 +75,7 @@ typedef enum transientStates {
 
 #ifdef BAKER_NEWSSTAND
 -(id)initWithIssueData:(NSDictionary *)issueData;
--(void)downloadWithDelegate:(id < NSURLConnectionDownloadDelegate >)delegate;
+-(NSURLConnection *)downloadWithDelegate:(id < NSURLConnectionDownloadDelegate >)delegate;
 #endif
 
 @end

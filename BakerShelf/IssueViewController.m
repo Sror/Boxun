@@ -39,6 +39,12 @@
 #endif
 
 #import "UIColor+Extensions.h"
+@interface IssueViewController()
+{
+    NSMutableDictionary *connectionDic;
+}
+@property NSString *originalStatus;
+@end
 
 @implementation IssueViewController
 
@@ -59,9 +65,10 @@
     self = [super init];
     if (self) {
         self.issue = bakerIssue;
+        self.originalStatus = [self.issue getStatus];
         currentStatus = nil;
         purchaseDelayed = NO;
-
+        connectionDic = [[NSMutableDictionary alloc] init];
         #ifdef BAKER_NEWSSTAND
         purchasesManager = [PurchasesManager sharedInstance];
         [self addPurchaseObserver:@selector(handleIssueRestored:) name:@"notification_issue_restored"];
@@ -428,7 +435,9 @@
 
 - (void)dealloc
 {
+    [_originalStatus release];
     [issue release];
+    [connectionDic release];
     [self.cancelButton release];
     [actionButton release];
     [archiveButton release];
@@ -443,9 +452,17 @@
 
 - (void)cancelButtonPressed:(UIButton *)sender
 {
-    
+    if ([connectionDic objectForKey:self.issue.url.absoluteString]) {
+        NSURLConnection *conn = [connectionDic objectForKey:self.issue.url.absoluteString];
+        [conn cancel];
+        [connectionDic removeObjectForKey:self.issue.url.absoluteString];
+    }
+//    self.issue.transientStatus = BakerIssueTransientStatusNone;
+//    [self refresh];
+//    [self refresh:self.originalStatus];
     self.issue.transientStatus = BakerIssueTransientStatusNone;
     [self refresh];
+
 }
 
 - (void)actionButtonPressed:(UIButton *)sender
@@ -469,7 +486,8 @@
 - (void)download
 {
     [self refresh:@"connecting"];
-    [self.issue downloadWithDelegate:self];
+    NSURLConnection *conn = [self.issue downloadWithDelegate:self];
+    [connectionDic setObject:conn forKey:conn.originalRequest.URL.absoluteString];
 }
 - (void)buy {
     [self addPurchaseObserver:@selector(handleIssuePurchased:) name:@"notification_issue_purchased"];
@@ -582,6 +600,10 @@
 }
 - (void)connectionDidFinishDownloading:(NSURLConnection *)connection destinationURL:(NSURL *)destinationURL
 {
+    if ([connectionDic objectForKey:connection.originalRequest.URL.absoluteString]) {
+        [connectionDic removeObjectForKey:connection.originalRequest.URL.absoluteString];
+    }
+    
     #ifdef BAKER_NEWSSTAND
     NSLog(@"Connection did finish downloading %@", destinationURL);
 
@@ -600,6 +622,7 @@
     }
     
     self.issue.transientStatus = BakerIssueTransientStatusNone;
+    
     [self refresh];
 
     // TODO: notify of new content with setApplicationIconBadgeNumber
@@ -618,6 +641,10 @@
     NSLog(@"Connection did resume downloading %lld %lld", totalBytesWritten, expectedTotalBytes);
 }
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    
+    if ([connectionDic objectForKey:connection.originalRequest.URL.absoluteString]) {
+        [connectionDic removeObjectForKey:connection.originalRequest.URL.absoluteString];
+    }
     NSLog(@"Connection error when trying to download %@: %@", [connection currentRequest].URL, [error localizedDescription]);
     [connection cancel];
 

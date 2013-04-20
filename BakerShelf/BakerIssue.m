@@ -117,14 +117,13 @@
     }
     return @"";
 }
--(void)downloadWithDelegate:(id < NSURLConnectionDownloadDelegate >)delegate {
+-(NSURLConnection *)downloadWithDelegate:(id < NSURLConnectionDownloadDelegate >)delegate {
     NKLibrary *nkLib = [NKLibrary sharedLibrary];
     NKIssue *nkIssue = [nkLib issueWithName:self.ID];
     NSURLRequest *req = [NSURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy  timeoutInterval:30];
 
     NKAssetDownload *assetDownload = [nkIssue addAssetWithRequest:req];
-    [assetDownload downloadWithDelegate:delegate];
-    
+     return [assetDownload downloadWithDelegate:delegate];
 }
 #endif
 
