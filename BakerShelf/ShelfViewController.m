@@ -223,11 +223,16 @@
 //        [buttonItems addObject:self.subscribeButton];
         [self.navigationController.navigationBar addSubview:_mySubscribeButton];
     }
-    self.navigationItem.leftBarButtonItems = buttonItems;
+//    self.navigationItem.leftBarButtonItems = buttonItems;
 //    self.navigationItem.rightBarButtonItems = buttonItems;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar_bg"] forBarMetrics:UIBarMetricsDefault];
     
-    
+    if (gridView.contentSize.height<= gridView.bounds.size.height){
+        CGRect frame = gridView.frame;
+        CGSize size = gridView.contentSize;
+        size.height = frame.size.height +20;
+        gridView.contentSize = size;
+    }
 }
 - (NSInteger)supportedInterfaceOrientations
 {

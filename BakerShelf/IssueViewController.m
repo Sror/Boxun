@@ -36,6 +36,7 @@
 #import "UIConstants.h"
 #ifdef BAKER_NEWSSTAND
 #import "PurchasesManager.h"
+#import "IssuesManager.h"
 #endif
 
 #import "UIColor+Extensions.h"
@@ -457,12 +458,33 @@
         [conn cancel];
         [connectionDic removeObjectForKey:self.issue.url.absoluteString];
     }
+    
+    NKLibrary *nkLib = [NKLibrary sharedLibrary];
+    NKIssue *nkIssue = [nkLib issueWithName:self.issue.ID];
+    NSString *name = nkIssue.name;
+    NSDate *date = nkIssue.date;
+    
+    [nkLib removeIssue:nkIssue];
+    
+    nkIssue = [nkLib addIssueWithName:name date:date];
+    self.issue.path = [[nkIssue contentURL] path];
+    
+    [self refresh];
+
+    
 //    self.issue.transientStatus = BakerIssueTransientStatusNone;
 //    [self refresh];
 //    [self refresh:self.originalStatus];
-    self.issue.transientStatus = BakerIssueTransientStatusNone;
-    [self refresh];
-
+//    self.issue.transientStatus = BakerIssueTransientStatusNone;
+//    NKLibrary *nkLib = [NKLibrary sharedLibrary];
+//    NKIssue *nkIssue = [nkLib issueWithName:self.issue.ID];
+//    [nkLib removeIssue:nkIssue];
+//    IssuesManager *issuesManager = [[[IssuesManager alloc] initWithURL:NEWSSTAND_MANIFEST_URL] autorelease];
+//    [issuesManager refresh];
+//    
+//    NSLog(@"%d",nkLib.downloadingAssets.count);
+//    [self refresh];
+//
 }
 
 - (void)actionButtonPressed:(UIButton *)sender
