@@ -114,6 +114,11 @@
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
     NSLog(@"App Store request failure: %@", error);
 
+    NSDictionary *dic = [[[NSDictionary alloc] initWithObjectsAndKeys:@"无法连接到 iTunes Store", @"NSLocalizedDescription", nil] autorelease];
+    NSError *myError = [[[NSError alloc] initWithDomain:@"SKErrorDomain" code:0 userInfo:dic] autorelease];
+    if (!error) {
+        error = myError;
+    }
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:error forKey:@"error"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"notification_products_request_failed" object:self userInfo:userInfo];
 

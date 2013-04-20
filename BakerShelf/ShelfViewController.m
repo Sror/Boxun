@@ -518,6 +518,8 @@
 }
 
 - (void)handleProductsRequestFailed:(NSNotification *)notification {
+
+    
     NSError *error = [notification.userInfo objectForKey:@"error"];
 
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PRODUCTS_REQUEST_FAILED_TITLE", nil)
