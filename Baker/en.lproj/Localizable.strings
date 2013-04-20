@@ -1,0 +1,71 @@
+// Shelf Navigation Title at the top of the main Issues List
+"SHELF_NAVIGATION_TITLE" = "";
+
+// Products alert
+"PRODUCTS_REQUEST_FAILED_TITLE" = "連接AppStore失敗";//"Fa​​ilure connecting to the App Store";
+"PRODUCTS_REQUEST_FAILED_CLOSE" = "關閉";//"Close";
+
+// Subscription button
+"SUBSCRIBE_BUTTON_TEXT" = "訂閱";//"Subscribe";
+"SUBSCRIBE_BUTTON_DISABLED_TEXT" = "訂閱中...";//"Subscribing...";
+"SUBSCRIBE_BUTTON_SUBSCRIBED_TEXT" = "訂閱過";//"Subscribed";
+
+"SUBSCRIPTIONS_SHEET_FREE" = "免費訂閱";//"Subscribe for free";
+"SUBSCRIPTIONS_SHEET_RESTORE" = "重新訂閱";//"Restore purchases";
+"SUBSCRIPTIONS_SHEET_CLOSE" = "關閉";//"Close";
+
+// Subscription alerts
+"SUBSCRIPTION_SUCCESSFUL_TITLE" = "訂閱成功";//"Subscribed successfully";
+"SUBSCRIPTION_SUCCESSFUL_MESSAGE" = "您已經成功訂閱";//"You have successfully subscribed";
+"SUBSCRIPTION_SUCCESSFUL_CLOSE" = "關閉";//"Close";
+"SUBSCRIPTION_FAILED_TITLE" = "訂閱失敗";//"Subscription failure";
+"SUBSCRIPTION_FAILED_CLOSE" = "關閉";//"Close";
+
+// Issue purchase alerts
+"ISSUE_PURCHASE_SUCCESSFUL_TITLE" = "購買成功";// "Purchase successful";
+"ISSUE_PURCHASE_SUCCESSFUL_MESSAGE" = "您已經成功購買";//"You have successfully purchased %@";
+"ISSUE_PURCHASE_SUCCESSFUL_CLOSE" = "關閉";//"Close";
+"ISSUE_PURCHASE_FAILED_TITLE" = "購買失敗";//"Purchase failure";
+"ISSUE_PURCHASE_FAILED_CLOSE" = "關閉";//"Close";
+
+// Restore alerts
+"RESTORE_FAILED_TITLE" = "還原失敗";//"Restore failure";
+"RESTORE_FAILED_CLOSE" = "關閉";//"Close";
+
+// Download alert
+"DOWNLOAD_FAILED_TITLE" = "下載失敗";//"Download failed";
+"DOWNLOAD_FAILED_MESSAGE" = "無法下載";//"The issue could not be downloaded";
+"DOWNLOAD_FAILED_CLOSE" = "關閉";//"Close";
+
+// Connection alert
+"INTERNET_CONNECTION_UNAVAILABLE_TITLE" = "沒有網絡連接";//"No Internet Connection";
+"INTERNET_CONNECTION_UNAVAILABLE_MESSAGE" = "網絡連接無法使用，本應用部分功能需要一個可用的活躍網絡";//"An Internet connection is unavailable. Some features of this application require an active connection.";
+"INTERNET_CONNECTION_UNAVAILABLE_CLOSE" = "好";//"OK";
+
+// Issue buttons
+"PREVIEW_TEXT" = "本期目錄";//"PREVIEW";
+"ACTION_REMOTE_TEXT" = "下載";//"DOWNLOAD";
+"ACTION_DOWNLOADED_TEXT" = "開始閱讀";//"READ";
+"ACTION_BUY_TEXT" = "購買";//"BUY";
+"ARCHIVE_TEXT" = "刪除";//"ARCHIVE";
+"CONNECTING_TEXT" = "連接中...";//"CONNECTING...";
+"DOWNLOADING_TEXT" = "下載中...";//"DOWNLOADING ...";
+"OPENING_TEXT" = "Loading...";
+"BUYING_TEXT" = "購買中...";//"BUYING...";
+"RETRIEVING_TEXT" = "更新價格中...";//"UPDATING PRICE...";
+"CANCEL_REQUEST_TEXT" = "取消";
+
+// Archiving alert
+"ARCHIVE_ALERT_TITLE" = "您確定要刪除嗎?";//"Are you sure you want to archive this issue?";
+"ARCHIVE_ALERT_MESSAGE" = "這一期雜誌即將從您的設備上刪除，您可以在需要的時候再次免費下載";//"This issue will be removed from your device. You may download it at anytime for free." ;
+"ARCHIVE_ALERT_BUTTON_CANCEL" = "取消";//"Cancel";
+"ARCHIVE_ALERT_BUTTON_OK" = "刪除";//"Archive";
+
+// Mail alert
+"MAILTO_ALERT_TITLE" = "失敗";//"Fa​​ilure";
+"MAILTO_ALERT_MESSAGE" = "您的設備不支持發送Email";//"Your device doesn't support the sending of emails!";
+"MAILTO_ALERT_CLOSE" = "好";//"OK";
+
+// Modal web view
+"WEB_MODAL_FAILURE_MESSAGE" = "無法連接";//"Unable to connect.";
+"WEB_MODAL_CLOSE_BUTTON_TEXT" = "後退";//"Back";
