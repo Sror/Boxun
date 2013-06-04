@@ -72,7 +72,7 @@
 {
     self.window = [[[InterceptorWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor whiteColor];
-
+    [self startToGetDeviceToken];
     #ifdef BAKER_NEWSSTAND
 
     NSLog(@"====== Newsstand is enabled ======");
@@ -101,7 +101,7 @@
     self.window.rootViewController = self.rootNavigationController;
     [self.window makeKeyAndVisible];
 
-    [self startToGetDeviceToken];
+    
     
     return YES;
 }
